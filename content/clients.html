@@ -1,0 +1,48 @@
+{% block content %}
+<link crossorigin="anonymous" href="/static/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Посетители</title>
+
+</head>
+
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер библиотечного билета</th>
+        <th>Имя</th>
+    <tr>
+    </thead>
+    <tbody>
+    {% if data %}
+    {% for row in data %}
+    <tr>
+        <td> {{ row.client_id }}</td>
+        <td> {{ row.name }}</td>
+        <td>
+            <a class="btn btn-secondary btn-sm" href="/client/{{ row.client_id }}">Выданные книги</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+{% endif %}
+    </table>
+<div class="row">
+        <div class="col">
+            <a class="btn btn-primary btn-lg btn-block" href="/client/add" role="button">Добавить нового посетителя</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
